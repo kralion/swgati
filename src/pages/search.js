@@ -1,11 +1,11 @@
-import BackgroundBasic from '@components/BackgroundBasic';
-import { Table } from '@components/Table';
-import FormS from '@components/form/FormSearch';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
-import Head from 'next/head';
+import BackgroundBasic from "@components/BackgroundBasic";
+import { Table } from "@components/Table";
+import FormS from "@components/Form/FormSearch";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import Head from "next/head";
 
 const SearchPage = () => {
   const { register, handleSubmit, setValue, watch, getValues } = useForm();
@@ -18,7 +18,7 @@ const SearchPage = () => {
   const [changeLimit, setChangeLimit] = useState(false);
   const [falseAbierta, setFalseAbierta] = useState(true);
   const [dataTable, setDataTable] = useState([]);
-  const styleth = 'font-sans text-sm font-normal px-5 py-2 border-none';
+  const styleth = "font-sans text-sm font-normal px-5 py-2 border-none";
 
   const onSubmit = (data) => {
     getData(data, false, true);
@@ -53,10 +53,10 @@ const SearchPage = () => {
 
     try {
       dataForm.oficina =
-        dataForm.oficina == 'otra' ? dataForm.otraOficina : dataForm.oficina;
+        dataForm.oficina == "otra" ? dataForm.otraOficina : dataForm.oficina;
 
       dataForm.tipoDoc =
-        dataForm.tipoDoc == 'otra' ? dataForm.otroDocumento : dataForm.tipoDoc;
+        dataForm.tipoDoc == "otra" ? dataForm.otroDocumento : dataForm.tipoDoc;
 
       delete dataForm.otraOficina;
       delete dataForm.otroDocumento;
@@ -68,7 +68,7 @@ const SearchPage = () => {
 
       const res = await fetch(
         `/api/document?pagina=${page}&limit=${limit}&order=${
-          abierta ? 'desc' : 'asc'
+          abierta ? "desc" : "asc"
         }&asunto=${dataForm.asunto}&codigo=${dataForm.codigo}&solicitante=${
           dataForm.solicitante
         }&fecha=${dataForm.fecha}&oficina=${dataForm.oficina}&tipoDoc=${
@@ -76,7 +76,7 @@ const SearchPage = () => {
         }&${
           dataTable.length && !newSearch && !changeOrderOrLimit
             ? `last=${dataTable[dataTable.length - 1]?.id}`
-            : ''
+            : ""
         }`
       );
 
