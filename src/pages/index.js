@@ -1,9 +1,9 @@
-import BackgroundBasic from '@components/BackgroundBasic';
-import { Table } from '@components/Table';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import Head from 'next/head';
+import BackgroundBasic from "@components/BackgroundBasic";
+import { Table } from "@components/Table";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Head from "next/head";
 
 const HomePage = () => {
   const router = useRouter();
@@ -13,14 +13,14 @@ const HomePage = () => {
   const [dataTable, setDataTable] = useState([]);
   const [abierta, setAbierta] = useState(true);
   const [falseAbierta, setFalseAbierta] = useState(true);
-  const styleth = 'font-sans text-sm font-normal px-5 py-2 border-none';
+  const styleth = "font-sans text-sm font-normal px-5 py-2 border-none";
 
   const getData = async () => {
     const res = await fetch(
       `/api/document?pagina=${page}&order=${
-        abierta ? 'desc' : 'asc'
+        abierta ? "desc" : "asc"
       }&point=home&limit=${limit}&${
-        dataTable.length ? `last=${dataTable[dataTable.length - 1]?.id}` : ''
+        dataTable.length ? `last=${dataTable[dataTable.length - 1]?.id}` : ""
       }`
     );
     const dataGet = await res.json();
@@ -59,7 +59,7 @@ const HomePage = () => {
   return (
     <>
       <Head>
-        <title>Sistema de Archivos - MDP</title>
+        <title>Municipalidad de Huancayo - GATI</title>
         <meta name="description" content="Generado en react" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

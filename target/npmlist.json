@@ -1,1 +1,21 @@
-{"version":"0.1.0","name":"sabdg-pancan","dependencies":{"@eslint/eslintrc":{"version":"2.0.0"},"@eslint/js":{"version":"8.35.0"},"@next/eslint-plugin-next":{"version":"13.2.3"},"@rushstack/eslint-patch":{"version":"1.2.0"},"@typescript-eslint/scope-manager":{"version":"5.54.0"},"@typescript-eslint/types":{"version":"5.54.0"},"@typescript-eslint/visitor-keys":{"version":"5.54.0"},"eslint-config-next":{"version":"13.2.3"},"eslint-import-resolver-node":{"version":"0.3.7"},"eslint-module-utils":{"version":"2.7.4"},"eslint-plugin-jsx-a11y":{"version":"6.7.1"},"eslint-plugin-react-hooks":{"version":"4.6.0"},"eslint-plugin-react":{"version":"7.32.2"},"eslint-utils":{"version":"3.0.0"},"next":{"version":"13.2.3"}}}
+{
+  "version": "0.1.0",
+  "name": "sabdg-pilcomayo",
+  "dependencies": {
+    "@eslint/eslintrc": { "version": "2.0.0" },
+    "@eslint/js": { "version": "8.35.0" },
+    "@next/eslint-plugin-next": { "version": "13.2.3" },
+    "@rushstack/eslint-patch": { "version": "1.2.0" },
+    "@typescript-eslint/scope-manager": { "version": "5.54.0" },
+    "@typescript-eslint/types": { "version": "5.54.0" },
+    "@typescript-eslint/visitor-keys": { "version": "5.54.0" },
+    "eslint-config-next": { "version": "13.2.3" },
+    "eslint-import-resolver-node": { "version": "0.3.7" },
+    "eslint-module-utils": { "version": "2.7.4" },
+    "eslint-plugin-jsx-a11y": { "version": "6.7.1" },
+    "eslint-plugin-react-hooks": { "version": "4.6.0" },
+    "eslint-plugin-react": { "version": "7.32.2" },
+    "eslint-utils": { "version": "3.0.0" },
+    "next": { "version": "13.2.3" }
+  }
+}

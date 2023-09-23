@@ -1,11 +1,10 @@
-import logo from '/public/logo-muni.png';
-import Button from '@components/Button';
-import Input from '@components/Input';
-import Image from 'next/image';
-import { useForm } from 'react-hook-form';
+import Button from "@components/Button";
+import Input from "@components/Input";
+import Image from "next/image";
+import { useForm } from "react-hook-form";
 
-import { useAuth } from '@context/AuthContext';
-import Head from 'next/head';
+import { useAuth } from "@context/AuthContext";
+import Head from "next/head";
 
 const LoginPage = () => {
   const { register, handleSubmit } = useForm();
@@ -19,25 +18,21 @@ const LoginPage = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-col mt-[85px] lg:mt-0 lg:flex-row justify-between items-center bg-[#FEFFD0] h-screen relative pt-16">
-        <div className=" lg:h-full w-full lg:w-1/2 bg-cover rounded-lg md:rounded-l-lg bg-[#e0e6dd] md:rounded-r-none text-center overflow-hidden relative flex justify-center">
-          <div className="self-center lg:max-w-[540px] max-w-[320px]">
-            <Image
-              className="md:h-full object-cover min-w-[280px] min-h-full"
-              src={logo}
-              alt="image"
-              width={540}
-              height={540}
-            />
-          </div>
-        </div>
-        <div className=" p-8 m-auto flex w-50%">
+      <div className="flex flex-col lg:mt-0 lg:flex-row justify-between items-center bg-[#EAB940] h-screen relative pt-16">
+        <Image
+          src="https://images.pexels.com/photos/2982449/pexels-photo-2982449.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="image"
+          width={800}
+          height={800}
+        />
+
+        <div className=" p-10 m-auto flex w-50%">
           <div className="px-4 py-2 bg-[#FFFFFF]  shadow-2xl rounded-lg">
             <h1 className="text-2xl font-bold text-gray-700  text-center font-['Roboto'] normal ">
               MUNICIPALIDAD DISTRITAL DE
             </h1>
             <p className="text-2xl font-bold text-center pt-2 normal text-[#109A3A] text-[50px]">
-              PANCÁN
+              HUANCAYO
             </p>
             <p className="text-2xl font-bold text-gray-700 text-center mt-[10px] pt-7">
               Ingresar

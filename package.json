@@ -1,5 +1,5 @@
 {
-  "name": "sabdg-pancan",
+  "name": "sabdg-pilcomayo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,6 +13,7 @@
     "eslint-config-next": "13.2.3",
     "firebase": "^9.17.2",
     "firebase-admin": "^11.5.0",
+    "lucide-react": "^0.279.0",
     "next": "13.2.3",
     "nookies": "^2.5.2",
     "react": "18.2.0",

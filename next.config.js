@@ -7,8 +7,11 @@ const nextConfig = {
     projectId: process.env.FIREBASE_PROJECTID,
     storageBucket: process.env.FIREBASE_STORAGEBUCKET,
     messagingSenderId: process.env.FIREBASE_MESSAGINGSENDERID,
-    appId: process.env.FIREBASE_APPID
-    }
+    appId: process.env.FIREBASE_APPID,
+  },
+  images: {
+    domains: ["www.munihuancayo.gob.pe", "images.pexels.com"],
+  },
 };
 
 module.exports = nextConfig;
