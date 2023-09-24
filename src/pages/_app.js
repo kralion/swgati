@@ -1,10 +1,10 @@
-import '@/styles/globals.css';
-import Navbar from '@layouts/Navbar';
-import { AuthProvider } from '@context/AuthContext';
-import ProtectedRoute from '@components/ProtectedRoute';
-import { useRouter } from 'next/router';
+import "@/styles/globals.css";
+import Navbar from "@layouts/Navbar";
+import { AuthProvider } from "@context/AuthContext";
+import ProtectedRoute from "@components/ProtectedRoute";
+import { useRouter } from "next/router";
 
-const noAuthRequired = ['/login'];
+const noAuthRequired = ["/login"];
 
 const App = ({ Component, pageProps }) => {
   const router = useRouter();

@@ -2,6 +2,7 @@ import Button from "@components/Button";
 import Input from "@components/Input";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
+import { AtSign } from "lucide-react";
 
 import { useAuth } from "@context/AuthContext";
 import Head from "next/head";
@@ -18,42 +19,39 @@ const LoginPage = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-col lg:mt-0 lg:flex-row justify-between items-center bg-[#EAB940] h-screen relative pt-16">
+      <div className="flex flex-col lg:mt-0 lg:flex-row justify-between items-center bg-gradient-to-br from-green-100 via-green-400 to-yellow-300 h-screen ">
         <Image
-          src="https://images.pexels.com/photos/2982449/pexels-photo-2982449.jpeg?auto=compress&cs=tinysrgb&w=800"
+          src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Municipalidad_Provincial_de_Huancayo_Edificio_Peru.jpg"
+          className="h-screen w-2/3"
           alt="image"
           width={800}
           height={800}
         />
 
-        <div className=" p-10 m-auto flex w-50%">
-          <div className="px-4 py-2 bg-[#FFFFFF]  shadow-2xl rounded-lg">
-            <h1 className="text-2xl font-bold text-gray-700  text-center font-['Roboto'] normal ">
-              MUNICIPALIDAD DISTRITAL DE
-            </h1>
-            <p className="text-2xl font-bold text-center pt-2 normal text-[#109A3A] text-[50px]">
-              HUANCAYO
-            </p>
-            <p className="text-2xl font-bold text-gray-700 text-center mt-[10px] pt-7">
-              Ingresar
+        <div className="mx-auto flex flex-col ">
+          <p className=" text-center">
+            Sistema de Gestión de Activos TI | <strong>SWGATI</strong>
+          </p>
+          <div>
+            <p className="text-xl font-bold text-center normal my-20 text-green-700 text-[50px]">
+              Ingreso a la Plataforma
             </p>
             <form
               onSubmit={handleSubmit(({ email, password }) =>
                 login(email, password)
               )}
-              className="py-5 flex flex-col justify-center items-center"
             >
               <Input
-                label="Correo electrónico:"
+                label="Correo electrónico"
                 name="email"
                 display={"block"}
                 id={"email"}
-                placeholder={"asd@gmail.com"}
+                placeholder={"ramiro1992@gmail.com"}
                 register={register}
                 required
               />
               <Input
-                label="Contraseña*:"
+                label="Contraseña"
                 name="password"
                 type="password"
                 display={"block"}
@@ -62,9 +60,8 @@ const LoginPage = () => {
                 register={register}
                 required
               />
-              <div>
-                <Button color="green" type="submit" text="Iniciar Sesión" />
-              </div>
+
+              <Button color="green" type="submit" text="Iniciar Sesión" />
             </form>
           </div>
         </div>

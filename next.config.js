@@ -10,7 +10,11 @@ const nextConfig = {
     appId: process.env.FIREBASE_APPID,
   },
   images: {
-    domains: ["www.munihuancayo.gob.pe", "images.pexels.com"],
+    domains: [
+      "www.munihuancayo.gob.pe",
+      "images.pexels.com",
+      "upload.wikimedia.org",
+    ],
   },
 };
 

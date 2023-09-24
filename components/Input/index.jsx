@@ -5,30 +5,30 @@ const Input = ({
   register,
   required,
   placeholder,
-  name
+  name,
 }) => {
   let typedisplay;
-  let margin = '';
-  let padding = '';
+  let margin = "";
+  let padding = "";
 
   switch (display) {
-    case 'inline':
-      typedisplay = 'block';
-      margin = 'mb-2';
+    case "inline":
+      typedisplay = "block";
+      margin = "mb-2";
       break;
-    case 'flex':
-      typedisplay = 'flex items-center';
-      padding = 'px-2';
+    case "flex":
+      typedisplay = "flex items-center";
+      padding = "px-2";
       break;
     default:
       break;
   }
 
   return (
-    <div className={`${typedisplay} m-3 max-w-md`}>
+    <div className={`${typedisplay} mt-7 space-y-3 `}>
       <label
         htmlFor={`${name}`}
-        className={`${typedisplay} ${margin} ${padding}  text-sm font-medium text-gray-600 w-28 max-h-8 mr-3`}
+        className={`${typedisplay} ${margin} ${padding}  text-sm pl-2`}
       >
         {label}
       </label>
@@ -36,7 +36,7 @@ const Input = ({
         {...register(name)}
         type={`${type}`}
         id={`${name}`}
-        className='bg-gray-300 border border-gray-400 text-gray-800 text-sm rounded-m block w-60 p-2.5  max-h-14 rounded'
+        className="bg-white px-5 py-3 shadow-lg text-[#006270] text-sm rounded-full block w-full p-2.5  "
         placeholder={`${placeholder}`}
         required={required}
         // {...props}

@@ -7,6 +7,12 @@ import { authContext, useAuth } from "@context/AuthContext";
 import { useRouter } from "next/router";
 import { auth } from "@libs/firebase";
 import { Cable } from "lucide-react";
+import { Inter } from "next/font/google";
+import Image from "next/image";
+
+const inter = Inter({
+  subsets: ["latin-ext"],
+});
 
 const Navbar = ({ children }) => {
   const [navbarOculta, setNavbarOculta] = useState(true);
@@ -34,15 +40,30 @@ const Navbar = ({ children }) => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50">
+    <div
+      className={`min-h-screen flex flex-col bg-slate-50 ${inter.className}`}
+    >
       <nav
         className={`flex items-center fixed w-screen ${
           user ? "justify-between" : "justify-center"
-        } h-[85px] flex-wrap bg-[#469C57] py-4 px-6 z-50`}
+        } h-[85px] flex-wrap py-4 px-6`}
       >
-        <Link className="flex items-center text-white gap-1 " href={"/"}>
-          <Cable size={25} />
-          <Title text={"GATI-MPH"} className="text-2xl font-semibold " />
+        <Link className="flex  text-white gap-1 " href={"/"}>
+          <Image
+            src="https://www.munihuancayo.gob.pe/portal/images/MPH%201.jpg#joomlaImage://local-images/MPH%201.jpg?width=855&height=398"
+            width={200}
+            height={100}
+            alt="Municipalidad Provincial de Huancayo"
+          />
+
+          <p>
+            <h1 className="text-3xl  uppercase font-semibold">
+              Municipalidad Provincial de Huancayo
+            </h1>
+            <h4 className="text-xl text-green-200 italic">
+              Gestión Edil 2022-2026
+            </h4>
+          </p>
         </Link>
         {user ? (
           <div className="block lg:hidden">
