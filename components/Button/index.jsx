@@ -1,7 +1,7 @@
 const colores = {
-  green: "bg-[#0B600F] hover:bg-[#2BCD32]",
-  red: "bg-[#831e1e] hover:bg-[#D32F2F]",
-  blue: "bg-[#2CA6C0] hover:bg-[#3fdcff]",
+  green: "bg-verder hover:bg-green-700",
+  red: "bg-red hover:bg-red-700",
+  blue: "bg-celeste hover:bg-blue-500",
 };
 
 const Button = (props) => {
@@ -9,7 +9,7 @@ const Button = (props) => {
   return (
     <button
       {...props}
-      className={`${colores[color]}   my-3 shadow focus:shadow-outline focus:outline-none text-white duration-300  text-sm py-3 px-5 rounded-full mt-16 w-full`}
+      className={`${colores[color]}  border-2 hover:shadow-md focus:shadow-outline  text-white duration-300  text-sm p-3 rounded-lg  w-full`}
     >
       {text}
     </button>

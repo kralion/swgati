@@ -69,9 +69,9 @@ const HomePage = () => {
       </Head>
       <div className="flex flex-col items-center place-content-center bg-white min-w-full min-h-screen">
         <div className="flex flex-col space-y-4">
-          <BackgroundBasic text={"Registrados"}>
+          <BackgroundBasic text={"Recientemente Registrados"}>
             <div className="space-y-7">
-              <div className="flex w-f h-10">
+              <div className="flex  h-10">
                 <div className="relative flex h-10 w-full flex-row-reverse overflow-clip rounded-lg">
                   <input
                     className="peer text-center rounded-r-lg border border-slate-400 px-2 text-slate-900 placeholder-slate-400 transition-colors duration-300 focus:outline-none"
@@ -107,10 +107,7 @@ const HomePage = () => {
                 {dataTable
                   .slice((page - 1) * limit, page * limit)
                   .map((data) => (
-                    <tr
-                      className=" odd:bg-gray-300/20 h-16 border-none"
-                      key={data.id}
-                    >
+                    <tr className=" odd:bg-gray-300/20 h-16" key={data.id}>
                       <th className={styleth}>{data?.codigo}</th>
                       <th className="text-left font-normal">{data.oficina}</th>
                       <th className={styleth}>{data.fecha}</th>

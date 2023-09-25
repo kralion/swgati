@@ -25,10 +25,10 @@ const Input = ({
   }
 
   return (
-    <div className={`${typedisplay} mt-7 space-y-3 `}>
+    <div className={`${typedisplay} m-5`}>
       <label
         htmlFor={`${name}`}
-        className={`${typedisplay} ${margin} ${padding}  text-sm pl-2`}
+        className={`${typedisplay} ${margin} ${padding}  text-sm `}
       >
         {label}
       </label>
@@ -36,7 +36,7 @@ const Input = ({
         {...register(name)}
         type={`${type}`}
         id={`${name}`}
-        className="bg-white px-5 py-3 shadow-lg text-[#006270] text-sm rounded-full block w-full p-2.5  "
+        className="bg-white px-5 py-3 border-1 border-verde text-verde text-sm rounded-lg block w-full p-2.5  "
         placeholder={`${placeholder}`}
         required={required}
         // {...props}

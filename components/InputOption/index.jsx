@@ -1,31 +1,39 @@
 import { useEffect, useState } from "react";
 import Input from "@components/Input";
 
-const InputOption = ({ optionArray, otheroption, photheroption, register, name, label, setValue, watch }) => {
+const InputOption = ({
+  optionArray,
+  otheroption,
+  photheroption,
+  register,
+  name,
+  label,
+  setValue,
+  watch,
+}) => {
   optionArray.sort((a, b) => a.localeCompare(b));
 
-  const selectedOption = watch(name)
+  const selectedOption = watch(name);
 
-  useEffect( () => {
-    if(selectedOption != "otra") {
-      setValue(otheroption, "")
+  useEffect(() => {
+    if (selectedOption != "otra") {
+      setValue(otheroption, "");
     }
-  },[selectedOption])
-  
-  
+  }, [selectedOption]);
+
   return (
     <>
-      <div className="flex items-center m-3 max-w-md">
+      <div className="flex items-center m-3 ">
         <label
           htmlFor={`${name}`}
           className={`flex items-center px-2 text-sm font-medium text-gray-600 w-28 max-h-8 mr-3`}
         >
           {label}
         </label>
-        <div className="flex flex-col">
+        <div className="flex items-center gap-2">
           <select
             {...register(name)}
-            className="bg-gray-300 border border-gray-400 text-gray-800 text-sm rounded-m block w-60 p-2.5  max-h-14 rounded"
+            className=" border-1 border-verde text-verde text-sm  rounded-m  w-full p-2.5  max-h-14 rounded-lg"
           >
             {optionArray.map((option, idx) => (
               <option key={idx} value={option}>
@@ -34,9 +42,11 @@ const InputOption = ({ optionArray, otheroption, photheroption, register, name, 
             ))}
             <option value="otra">Otro:</option>
           </select>
-          
+
           <input
-            className={`${watch(name) != "otra" && "hidden"} bg-gray-300 border border-gray-400 text-gray-800 text-sm rounded-m block w-60 p-2.5 max-h-14 rounded`}
+            className={`${
+              watch(name) != "otra" && "hidden"
+            }  border-1   text-verde border-verde  rounded-m w-full p-2.5 text-sm rounded-lg my-5`}
             type="text"
             {...register(otheroption)}
             placeholder={photheroption}

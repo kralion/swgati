@@ -102,7 +102,7 @@ const FormS = ({ register, handleSubmit, onSubmit, setValue, watch }) => {
             name="oficina"
             register={register}
             otheroption="otraOficina"
-            photheroption="Ingrese otra oficina"
+            photheroption="Ingrese la Oficina"
             setValue={setValue}
             watch={watch}
           />
@@ -113,7 +113,7 @@ const FormS = ({ register, handleSubmit, onSubmit, setValue, watch }) => {
           name="tipoDoc"
           register={register}
           otheroption="otroDocumento"
-          photheroption="Ingrese otro Documento"
+          photheroption="Ingrese el Tipo"
           setValue={setValue}
           watch={watch}
         />

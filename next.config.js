@@ -14,6 +14,7 @@ const nextConfig = {
       "www.munihuancayo.gob.pe",
       "images.pexels.com",
       "upload.wikimedia.org",
+      "img.freepik.com",
     ],
   },
 };

@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import Head from "next/head";
+import { FolderSearch2, ArrowLeft, ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 const SearchPage = () => {
   const { register, handleSubmit, setValue, watch, getValues } = useForm();
@@ -112,7 +114,7 @@ const SearchPage = () => {
       </Head>
       <div className="flex flex-col items-center place-content-center  min-w-full min-h-screen">
         <div className="flex flex-col space-y-4 mt-28">
-          <BackgroundBasic text={"Búsqueda"}>
+          <BackgroundBasic text={"Búsqueda de Activos TI"}>
             <FormS
               register={register}
               handleSubmit={handleSubmit}
@@ -122,31 +124,31 @@ const SearchPage = () => {
             />
           </BackgroundBasic>
           <BackgroundBasic text={"Resultados"}>
-            <div className="justify-center my-8 mx-4 ">
+            <div className="justify-center space-y-5 ">
               <div className="flex w-f h-10">
                 <div className="relative flex h-10 w-full flex-row-reverse overflow-clip rounded-lg">
                   <input
-                    className="peer w-1/4 text-center rounded-r-lg border border-slate-400 px-2 text-slate-900 placeholder-slate-400 transition-colors duration-300 focus:border-sky-400 focus:outline-none"
+                    className="peer text-center rounded-r-lg border border-slate-400 px-2 text-slate-900 placeholder-slate-400 transition-colors duration-300 focus:outline-none"
                     type="number"
                     name="limit"
                     id="limit"
-                    placeholder="Número de resultados"
+                    placeholder=" N° Resultados "
                     value={falseLimit}
                     onChange={(e) => {
                       setFalseLimit(e.target.value);
                     }}
                   />
                   <label
-                    className="flex w-3/4 bg-[#0B600F] justify-center items-center text-white rounded-l-lg border border-slate-400 px-2 text-sm transition-colors duration-300 peer-focus:border-[#2BCD32] peer-focus:bg-[#2BCD32] peer-focus:text-white"
+                    className="flex  bg-gray-200 justify-center items-center  rounded-l-lg  px-2 text-sm transition-colors duration-300 peer-focus:border-[#2BCD32] peer-focus:bg-verde peer-focus:text-white"
                     htmlFor="limit"
                   >
-                    Cantidad de resultados por consulta (por defecto 5)
+                    Se muestran los 5 primeros resultados
                   </label>
                 </div>
                 <button
-                  className="bg-[#0B600F] ml-3 border border-gray-300 text-white font-bold hover:bg-[#2BCD32] rounded-l-lg rounded-r-lg leading-tight py-2 px-3"
+                  className=" ml-3  border  text-white text-sm bg-verde hover:bg-green-700 rounded-l-lg rounded-r-lg leading-tight  px-5"
                   onClick={() => {
-                    if (limit !== falseLimit) setChangeLimit(true);
+                    if (falseAbierta !== abierta) setDataTable([]);
                     setLimit(falseLimit);
                     setAbierta(falseAbierta);
                   }}
@@ -154,49 +156,61 @@ const SearchPage = () => {
                   Aplicar
                 </button>
               </div>
-              <div
-                className="mb-4 flex items-center cursor-pointer"
-                onClick={toggleAbierta}
-              >
-                <span
-                  className={`transform text-[#0B600F] ml-1 mr-2 transition-all duration-500 ${
-                    falseAbierta ? "rotate-180" : ""
-                  }`}
-                >
-                  &#9660;
-                </span>
-                {falseAbierta ? (
-                  <p className="text-[#0B600F] font-semibold">Ascendente</p>
-                ) : (
-                  <p className="text-[#0B600F] font-semibold">Descendente</p>
-                )}
-              </div>
 
               {!dataTable.length ? (
-                <p className="text-center">NO hay datos de esta búsqueda</p>
+                <p className="text-center">
+                  <h3>NO hay datos de esta búsqueda</h3>
+                  <Image
+                    src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-2506.jpg?size=626&ext=jpg&ga=GA1.1.1574565953.1694553592&semt=ais"
+                    alt="No hay datos"
+                    width={300}
+                    height={300}
+                  />
+                </p>
               ) : dataTable.length &&
                 dataTable.slice((page - 1) * limit, page * limit).length ===
                   0 ? (
-                <p>NO hay más resultados de esta búsqueda</p>
+                <div className=" flex flex-col items-center text-center">
+                  <span className="text-center text-rojo font-bold uppercase my-10">
+                    Hzzz... parece que no hay más datos relacionados a tu
+                    búsqueda
+                  </span>
+                  <Image
+                    src="https://img.freepik.com/free-vector/cyber-attack-law-enforcement-criminal-stealing-money-online_335657-3130.jpg?size=626&ext=jpg&ga=GA1.1.1574565953.1694553592&semt=ais"
+                    alt="No hay datos"
+                    width={500}
+                    height={500}
+                  />
+                  <button
+                    onClick={() => {
+                      beforePage();
+                    }}
+                    className="bg-green-100 border-1 w-36 flex items-center justify-center border-green-500 text-green-500 gap-2 hover:bg-green-200 rounded-full px-3 py-1"
+                  >
+                    <ArrowLeft size={15} />
+                    Ir Atrás
+                  </button>
+                </div>
               ) : (
                 <Table>
                   {dataTable
                     .slice((page - 1) * limit, page * limit)
                     .map((data) => (
-                      <tr
-                        className="even:bg-gray-100 odd:bg-[#a0c08b] border-none"
-                        key={data.id}
-                      >
+                      <tr className=" odd:bg-gray-300/20 h-16" key={data.id}>
                         <th className={styleth}>{data?.codigo}</th>
                         <th className={styleth}>{data.oficina}</th>
                         <th className={styleth}>{data.fecha}</th>
                         <th className={styleth}>{data.tipoDoc}</th>
-                        <th className={styleth}>
+                        <th>
                           <Link
-                            className="p-2 text-green-800"
+                            className="flex hover:text-green-700 font-normal gap-2 text-sm items-center"
                             href={`/preview?id=${data.id}`}
                           >
-                            Vista previa 🔍
+                            <FolderSearch2
+                              className="cursor-pointer"
+                              size={14}
+                            />
+                            Preview
                           </Link>
                         </th>
                       </tr>
@@ -204,33 +218,26 @@ const SearchPage = () => {
                 </Table>
               )}
               <br />
-              <div className="max-w-2xl">
-                <ul className="inline-flex -space-x-px">
-                  <li>
-                    <button
-                      onClick={() => {
-                        beforePage();
-                      }}
-                      className="bg-[#0B600F] border border-gray-300 text-white hover:bg-[#2BCD32] ml-0 rounded-l-lg leading-tight py-2 px-3"
-                    >
-                      Anterior
-                    </button>
-                  </li>
-                  <p className="bg-[#0B600F] border border-gray-300 text-white hover:bg-[#2BCD32] rounded-lg leading-tight py-2 px-3">
-                    {page}
-                  </p>
-                  <li>
-                    <button
-                      onClick={() => {
-                        nextPage();
-                        // return setPage(page + 1);
-                      }}
-                      className="bg-[#0B600F] border border-gray-300 text-white hover:bg-[#2BCD32] rounded-r-lg leading-tight py-2 px-3"
-                    >
-                      Siguiente
-                    </button>
-                  </li>
-                </ul>
+              <div className="space-x-1">
+                <button
+                  onClick={() => {
+                    beforePage();
+                  }}
+                  title="Anterior"
+                  className="bg-green-100 border-1  border-green-500 text-green-500 hover:bg-green-200 rounded-full px-3 py-1"
+                >
+                  <ArrowLeft size={15} />
+                </button>
+
+                <button
+                  onClick={() => {
+                    nextPage();
+                  }}
+                  title="Siguiente"
+                  className="bg-green-100 border-1  border-green-500 text-green-500 hover:bg-green-200 rounded-full px-3 py-1"
+                >
+                  <ArrowRight size={15} />
+                </button>
               </div>
             </div>
           </BackgroundBasic>
