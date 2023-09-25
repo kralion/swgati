@@ -183,7 +183,7 @@ const EditDocumentPage = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-col items-center place-content-center bg-[#e0e6dd] min-w-full min-h-screen">
+      <div className="flex flex-col items-center place-content-center  min-w-full min-h-screen">
         <div className="flex flex-col space-y-4 mt-28">
           <BackgroundBasic text={"Editar Campos"}>
             <Form

@@ -9,6 +9,7 @@ import { auth } from "@libs/firebase";
 import { Cable } from "lucide-react";
 import { Inter } from "next/font/google";
 import Image from "next/image";
+import { LogOutIcon } from "lucide-react";
 
 const inter = Inter({
   subsets: ["latin-ext"],
@@ -55,15 +56,6 @@ const Navbar = ({ children }) => {
             height={100}
             alt="Municipalidad Provincial de Huancayo"
           />
-
-          <p>
-            <h1 className="text-3xl  uppercase font-semibold">
-              Municipalidad Provincial de Huancayo
-            </h1>
-            <h4 className="text-xl text-green-200 italic">
-              Gestión Edil 2022-2026
-            </h4>
-          </p>
         </Link>
         {user ? (
           <div className="block lg:hidden">
@@ -86,21 +78,21 @@ const Navbar = ({ children }) => {
         )}
 
         <div
-          className={`w-full ${display} flex-grow lg:flex lg:items-center lg:-mt-2 lg:w-auto bg-[#0E4D11] px-4 lg:py-0 py-4`}
+          className={`w-full ${display} flex lg:flex items-start  lg:-mt-2 lg:w-auto  lg:py-0 py-4`}
         >
           {user ? (
-            <div className="text-sm lg:flex-grow">
+            <div className="text-sm space-x-3  ">
               <Link
                 href="/save_document"
-                className="block mt-4 lg:inline-block lg:-mt-0 text-gray-200 hover:text-white mr-4 font-semibold text-lg"
+                className=" lg:inline-block  hover:bg-green-200 py-1 px-3 rounded-md  duration-200  lg:-mt-0  "
               >
-                Guardar
+                Registro
               </Link>
               <Link
                 href="/search"
-                className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4 font-semibold text-lg"
+                className="lg:inline-block  hover:bg-green-200  py-1 px-3 rounded-md duration-200  lg:mt-0  "
               >
-                Buscar
+                Búsqueda
               </Link>
             </div>
           ) : (
@@ -111,9 +103,11 @@ const Navbar = ({ children }) => {
               <button
                 onClick={logout}
                 href="#responsive-header"
-                className="inline-block text-sm px-5 py-3 font-semibold leading-none border rounded text-gray-100 bg-[#0B600F] s border-none shadow-sm shadow-[#0a450d] hover:border-transparent hover:text-[#0B600F] hover:bg-gray-300 mt-4 lg:mt-0"
+                title="Cerrar Sesión"
+                className=" flex items-center text-sm  hover:bg-green-200  gap-2 py-1 px-3 rounded-md duration-200    "
               >
                 Cerrar Sesión
+                <LogOutIcon size={15} />
               </button>
             </div>
           ) : (
