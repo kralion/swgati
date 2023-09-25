@@ -1,6 +1,6 @@
 const colores = {
-  green: "bg-verder hover:bg-green-700",
-  red: "bg-red hover:bg-red-700",
+  green: "bg-verde hover:bg-green-700",
+  red: "bg-rojo hover:bg-red-700",
   blue: "bg-celeste hover:bg-blue-500",
 };
 

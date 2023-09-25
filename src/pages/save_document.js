@@ -116,14 +116,14 @@ const SaveDocumentPage = () => {
   return (
     <>
       <Head>
-        <title>Guardar Documento</title>
+        <title>Registrar Documento</title>
         <meta name="description" content="Generado en react" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-col items-center place-content-center min-w-full min-h-screen">
-        <div className="flex flex-col space-y-4 mt-28">
-          <BackgroundBasic text={"Guardar Documento"}>
+      <div className="flex flex-col items-center place-content-center min-h-screen">
+        <div className="flex flex-col mt-20">
+          <BackgroundBasic text={"Formulario de Registro"}>
             <Form
               register={register}
               handleSubmit={handleSubmit}
@@ -136,7 +136,7 @@ const SaveDocumentPage = () => {
       </div>
       <Alert
         type={typeAlert}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-celeste hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
         visible={visible}
       />
     </>
