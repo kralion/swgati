@@ -158,13 +158,7 @@ const SearchPage = () => {
 
             {!dataTable.length ? (
               <p className="text-center">
-                <h3>NO hay datos de esta búsqueda</h3>
-                <Image
-                  src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-2506.jpg?size=626&ext=jpg&ga=GA1.1.1574565953.1694553592&semt=ais"
-                  alt="No hay datos"
-                  width={300}
-                  height={300}
-                />
+                <h3>No hay datos de esta búsqueda</h3>
               </p>
             ) : dataTable.length &&
               dataTable.slice((page - 1) * limit, page * limit).length === 0 ? (
