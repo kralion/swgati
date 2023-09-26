@@ -9,7 +9,7 @@ const Button = (props) => {
   return (
     <button
       {...props}
-      className={`${colores[color]}  border-2 hover:shadow-md focus:shadow-outline  text-white duration-300  text-sm p-3 rounded-lg  w-full`}
+      className={`${colores[color]}   hover:shadow-2xl  text-white duration-300  text-sm p-3 rounded-lg  w-full`}
     >
       {text}
     </button>

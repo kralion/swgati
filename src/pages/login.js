@@ -4,8 +4,13 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import "animate.css";
 import LogoMuni from "../assets/logo-muni.png";
-
+import { Bebas_Neue } from "next/font/google";
 import { useAuth } from "@context/AuthContext";
+
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin-ext"],
+  weight: ["400"],
+});
 
 const LoginPage = () => {
   const { register, handleSubmit } = useForm();
@@ -29,13 +34,14 @@ const LoginPage = () => {
           height={300}
           alt="Municipalidad Provincial de Huancayo"
         />
-        <p className=" text-center ">
-          Sistema de Gestión de Activos TI | <strong>SWGATI</strong>
-        </p>
+        <h3>
+          Sistema de Gestión de Activos TI -{" "}
+          <strong className={`${bebasNeue.className} text-xl`}>SGATI</strong>
+        </h3>
         <div>
-          <p className="text-xl font-bold text-center normal my-20 text-green-700 text-[50px]">
+          <h2 className="text-xl font-bold text-center normal my-20 text-green-700 text-[50px]">
             Ingreso a la Plataforma
-          </p>
+          </h2>
           <form
             className="space-y-5"
             onSubmit={handleSubmit(({ email, password }) =>
@@ -62,7 +68,7 @@ const LoginPage = () => {
               required
             />
 
-            <Button color="green" type="submit" text="Inicar Sesión" />
+            <Button color="green" type="submit" text="Iniciar Sesión" />
           </form>
         </div>
       </div>
