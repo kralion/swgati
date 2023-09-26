@@ -1,12 +1,11 @@
-import BackgroundBasic from '@components/BackgroundBasic';
-import Form from '@components/Form';
-import Alert from '@components/alerts';
-import { useForm } from 'react-hook-form';
-import { useState, useEffect } from 'react';
-import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import { storage } from '@libs/firebase';
-import { useRouter } from 'next/router';
-import Head from 'next/head';
+import BackgroundBasic from "@components/BackgroundBasic";
+import Form from "@components/Form";
+import Alert from "@components/alerts";
+import { storage } from "@libs/firebase";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 const officeOptionArray = [
   "Consejo municipal",
@@ -65,7 +64,7 @@ const typedocOptionArray = [
 
 const EditDocumentPage = () => {
   const id = useRouter().query.id;
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState("");
 
   const { register, handleSubmit, setValue, watch } = useForm({
     defaultValues: async () => {
@@ -73,27 +72,27 @@ const EditDocumentPage = () => {
       const data = await res.json();
       setUrl(data.url);
 
-      if(!officeOptionArray.includes(data.oficina)){
-        data.otraOficina = data.oficina
-        data.oficina = "otra"
+      if (!officeOptionArray.includes(data.oficina)) {
+        data.otraOficina = data.oficina;
+        data.oficina = "otra";
       }
 
-      if(!typedocOptionArray.includes(data.tipoDoc)){
-        data.otroDocumento = data.tipoDoc
-        data.tipoDoc = "otra"
+      if (!typedocOptionArray.includes(data.tipoDoc)) {
+        data.otroDocumento = data.tipoDoc;
+        data.tipoDoc = "otra";
       }
 
       return data;
-    }
+    },
   });
 
   const [visible, setVisible] = useState(false);
-  let [typeAlert, setTypeAlert] = useState('');
+  let [typeAlert, setTypeAlert] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setVisible(false);
-      setTypeAlert('');
+      setTypeAlert("");
     }, 5000);
     return () => clearTimeout(timer);
   }, [visible]);
@@ -104,10 +103,11 @@ const EditDocumentPage = () => {
 
   const postData = async (dataForm) => {
     try {
-      
-      dataForm.oficina = dataForm.oficina == "otra" ? dataForm.otraOficina : dataForm.oficina
+      dataForm.oficina =
+        dataForm.oficina == "otra" ? dataForm.otraOficina : dataForm.oficina;
 
-      dataForm.tipoDoc = dataForm.tipoDoc == "otra" ? dataForm.otroDocumento : dataForm.tipoDoc
+      dataForm.tipoDoc =
+        dataForm.tipoDoc == "otra" ? dataForm.otroDocumento : dataForm.tipoDoc;
 
       const file = dataForm.archivo[0];
 
@@ -131,20 +131,20 @@ const EditDocumentPage = () => {
       const uploadTask = uploadBytesResumable(storageRef, file);
 
       uploadTask.on(
-        'state_changed',
+        "state_changed",
         (snapshot) => {
           switch (snapshot.state) {
-            case 'paused':
-              console.log('Upload is paused');
+            case "paused":
+              console.log("Upload is paused");
               break;
-            case 'running':
-              console.log('Upload is running');
+            case "running":
+              console.log("Upload is running");
               break;
           }
         },
         (error) => {
           message.error(error.message);
-          setTypeAlert('alert');
+          setTypeAlert("alert");
           setVisible(true);
         },
         () => {
@@ -152,17 +152,17 @@ const EditDocumentPage = () => {
             dataForm.url = url;
 
             const res = await fetch(`/api/document/${id}`, {
-              method: 'PATCH',
-              headers: { 'Content-type': 'application/json' },
-              body: JSON.stringify(dataForm)
+              method: "PATCH",
+              headers: { "Content-type": "application/json" },
+              body: JSON.stringify(dataForm),
             });
 
             const data = await res.json();
 
             if (data) {
-              setTypeAlert('successful');
+              setTypeAlert("successful");
             } else {
-              setTypeAlert('alert');
+              setTypeAlert("alert");
             }
             setVisible(true);
           });
@@ -170,19 +170,13 @@ const EditDocumentPage = () => {
       );
     } catch (error) {
       console.log(error);
-      setTypeAlert('alert');
+      setTypeAlert("alert");
       setVisible(true);
     }
   };
 
   return (
-    <>
-      <Head>
-        <title>Editar Documento</title>
-        <meta name="description" content="Generado en react" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div>
       <div className="flex flex-col items-center place-content-center  min-w-full min-h-screen">
         <div className="flex flex-col space-y-4 mt-28">
           <BackgroundBasic text={"Editar Campos"}>
@@ -203,7 +197,7 @@ const EditDocumentPage = () => {
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         visible={visible}
       />
-    </>
+    </div>
   );
 };
 

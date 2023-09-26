@@ -24,19 +24,18 @@ const Form = ({
     "Software de Seguridad",
     "Teléfonos IP",
   ];
-
-  const typedocOptionArray = [
-    "Solicitud",
-    "Oficio",
-    "Memorándum",
-    "Cartas",
-    "Costos",
-    "Programa vaso de leche",
-    "Informes",
-    ,
-    "Comprobantes de pago",
-    "Resoluciones de alcaldía",
-    "Ordenanzas municipales",
+  const tiAssetDocumentTypes = [
+    "Orden de Compra",
+    "Contrato de Compra",
+    "Licencia de Software",
+    "Contrato de Arrendamiento",
+    "Solicitud de Adquisición",
+    "Cotización de Proveedores",
+    "Acuerdo de Nivel de Servicio (SLA)",
+    "Contrato de Mantenimiento",
+    "Informe de Evaluación de Activos",
+    "Factura de Compra",
+    "Garantía del Fabricante",
   ];
 
   return (
@@ -71,12 +70,12 @@ const Form = ({
                 name="oficina"
                 register={register}
                 otheroption="otraOficina"
-                photheroption="Ingrese otra Oficina"
+                photheroption="Ingrese el tipo de Activo"
                 setValue={setValue}
                 watch={watch}
               />
               <InputOption
-                optionArray={typedocOptionArray}
+                optionArray={tiAssetDocumentTypes}
                 label="Tipo de doc*:"
                 name="tipoDoc"
                 register={register}

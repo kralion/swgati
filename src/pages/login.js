@@ -2,73 +2,71 @@ import Button from "@components/Button";
 import Input from "@components/Input";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
-import { AtSign } from "lucide-react";
 import "animate.css";
+import LogoMuni from "../assets/logo-muni.png";
 
 import { useAuth } from "@context/AuthContext";
-import Head from "next/head";
 
 const LoginPage = () => {
   const { register, handleSubmit } = useForm();
   const { login } = useAuth();
 
   return (
-    <>
-      <Head>
-        <title>Login</title>
-        <meta name="description" content="Generado en react" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <div className="flex flex-col lg:mt-0 lg:flex-row justify-between items-center bg-gradient-to-br from-green-100 via-green-400 to-yellow-300 h-screen ">
+    <div className="flex flex-col lg:mt-0 lg:flex-row justify-between bg-gradient-to-br from-green-100 via-green-400 to-yellow-300 h-screen ">
+      <Image
+        src="https://munihuancayo.gob.pe/web_mph2023/images/DJI_0711.JPG"
+        className="h-screen w-full lg:w-2/3"
+        alt="image"
+        width={800}
+        height={800}
+      />
+
+      <div className="mx-auto animate__animated animate__fadeInDown flex flex-col mt-20 ">
         <Image
-          src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Municipalidad_Provincial_de_Huancayo_Edificio_Peru.jpg"
-          className="h-screen w-2/3"
-          alt="image"
-          width={800}
-          height={800}
+          className="cursor-pointer animate__animated animate__fadeInLeft hover:opacity-70 transition-all duration-200 ease-in-out "
+          src={LogoMuni}
+          width={300}
+          height={300}
+          alt="Municipalidad Provincial de Huancayo"
         />
-
-        <div className="mx-auto animate__animated animate__fadeInDown flex flex-col ">
-          <p className=" text-center">
-            Sistema de Gestión de Activos TI | <strong>SWGATI</strong>
+        <p className=" text-center ">
+          Sistema de Gestión de Activos TI | <strong>SWGATI</strong>
+        </p>
+        <div>
+          <p className="text-xl font-bold text-center normal my-20 text-green-700 text-[50px]">
+            Ingreso a la Plataforma
           </p>
-          <div>
-            <p className="text-xl font-bold text-center normal my-20 text-green-700 text-[50px]">
-              Ingreso a la Plataforma
-            </p>
-            <form
-              className="space-y-5"
-              onSubmit={handleSubmit(({ email, password }) =>
-                login(email, password)
-              )}
-            >
-              <Input
-                label="Correo electrónico"
-                name="email"
-                display={"block"}
-                id={"email"}
-                placeholder={"ramiro1992@gmail.com"}
-                register={register}
-                required
-              />
-              <Input
-                label="Contraseña"
-                name="password"
-                type="password"
-                display={"block"}
-                id={"contraseña"}
-                placeholder={""}
-                register={register}
-                required
-              />
+          <form
+            className="space-y-5"
+            onSubmit={handleSubmit(({ email, password }) =>
+              login(email, password)
+            )}
+          >
+            <Input
+              label="Correo electrónico"
+              name="email"
+              display={"block"}
+              id={"email"}
+              placeholder={"munihuancayo@gmail.com"}
+              register={register}
+              required
+            />
+            <Input
+              label="Contraseña"
+              name="password"
+              type="password"
+              display={"block"}
+              id={"contraseña"}
+              placeholder={""}
+              register={register}
+              required
+            />
 
-              <Button color="green" type="submit" text="Iniciar Sesión" />
-            </form>
-          </div>
+            <Button color="green" type="submit" text="Inicar Sesión" />
+          </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

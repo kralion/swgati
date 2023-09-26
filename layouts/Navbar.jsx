@@ -1,16 +1,11 @@
-import Title from "@components/Title";
-import { signOut } from "firebase/auth";
-import React, { useContext } from "react";
-import { useState } from "react";
-import Link from "next/link";
-import { authContext, useAuth } from "@context/AuthContext";
-import { useRouter } from "next/router";
-import { auth } from "@libs/firebase";
-import { Cable } from "lucide-react";
+import { useAuth } from "@context/AuthContext";
+import "animate.css";
+import { LogOutIcon } from "lucide-react";
 import { Inter } from "next/font/google";
 import Image from "next/image";
-import { LogOutIcon } from "lucide-react";
-import "animate.css";
+import Link from "next/link";
+import { useState } from "react";
+import LogoMuni from "../src/assets/logo-muni.png";
 
 const inter = Inter({
   subsets: ["latin-ext"],
@@ -53,7 +48,7 @@ const Navbar = ({ children }) => {
         <Link href={"/"}>
           <Image
             className="cursor-pointer animate__animated animate__fadeInLeft hover:opacity-70 transition-all duration-200 ease-in-out"
-            src="https://o.remove.bg/downloads/36fc9ab4-1aff-43ce-8c6c-80f1e41de6d7/MPH_1-removebg-preview.png"
+            src={LogoMuni}
             width={200}
             height={100}
             alt="Municipalidad Provincial de Huancayo"
@@ -84,21 +79,21 @@ const Navbar = ({ children }) => {
             <div className="text-sm flex gap-5">
               <Link
                 href="/save_document"
-                className=" lg:inline-block hover:font-black hover:text-verde  duration-200    "
+                className=" lg:inline-block font-bold text-verde hover:opacity-60   duration-200    "
               >
-                Registro
+                Registras Activos TI
               </Link>
               <Link
                 href="/search"
-                className="lg:inline-block  hover:font-black hover:text-verde    duration-200   "
+                className=" lg:inline-block font-bold text-verde hover:opacity-60   duration-200    "
               >
-                Búsqueda
+                Buscar Registros
               </Link>
               <button
                 onClick={logout}
                 href="#responsive-header"
                 title="Cerrar Sesión"
-                className=" flex items-center text-sm gap-1 hover:font-black hover:text-verde    duration-200    "
+                className=" flex items-center gap-1 font-bold text-verde hover:opacity-60 mt-0.5  duration-200    "
               >
                 Cerrar Sesión
                 <LogOutIcon size={15} />

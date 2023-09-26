@@ -1,4 +1,4 @@
-const headtTexts = ["N°", "OFICINA", "FECHA", "TIPO", "ACCIÓN"];
+const headtTexts = ["N°", "ACTIVO", "FECHA ADQUISICION", "CONTRATO", "ACCIÓN"];
 const Table = ({ children }) => {
   //const { children } = props;
   return (

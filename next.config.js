@@ -15,7 +15,8 @@ const nextConfig = {
       "images.pexels.com",
       "upload.wikimedia.org",
       "img.freepik.com",
-      "o.remove.bg",
+      "img.icons8.com",
+      "munihuancayo.gob.pe",
     ],
   },
 };

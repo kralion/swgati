@@ -1,11 +1,12 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  signOut
-} from 'firebase/auth';
-import { auth } from '@libs/firebase';
-import { useRouter } from 'next/router';
+  signOut,
+} from "firebase/auth";
+import { auth } from "@libs/firebase";
+import { useRouter } from "next/router";
+import Alert from "@components/alerts";
 
 const AuthContext = createContext();
 
@@ -22,7 +23,7 @@ export const AuthProvider = ({ children }) => {
         setUser({
           uid: user.uid,
           email: user.email,
-          displayName: user.displayName
+          displayName: user.displayName,
         });
       } else {
         setUser(null);
@@ -35,9 +36,13 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password).then(() =>
-      push('/')
-    );
+    return signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        push("/");
+      })
+      .catch((error) => {
+        alert("Credenciales Incorrectas");
+      });
   };
 
   const logout = async () => {

@@ -1,14 +1,13 @@
 import BackgroundBasic from "@components/BackgroundBasic";
-import { Table } from "@components/Table";
 import FormS from "@components/Form/FormSearch";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import { useForm } from "react-hook-form";
-import Head from "next/head";
-import { FolderSearch2, ArrowLeft, ArrowRight } from "lucide-react";
-import Image from "next/image";
+import { Table } from "@components/Table";
 import "animate.css";
+import { ArrowLeft, ArrowRight, FolderSearch2 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 const SearchPage = () => {
   const { register, handleSubmit, setValue, watch, getValues } = useForm();
@@ -106,135 +105,121 @@ const SearchPage = () => {
   }, [abierta]);
 
   return (
-    <>
-      <Head>
-        <title>Búsqueda de Activos TI</title>
-        <meta name="description" content="Generado en react" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <div
-        style={{
-          backgroundImage:
-            "url('https://img.freepik.com/free-vector/topographic-contour-lines-map-seamless-pattern_1284-52862.jpg?size=626&ext=jpg&ga=GA1.1.1574565953.1694553592&semt=sph)",
-        }}
-        className="flex flex-col  items-center place-content-center  "
-      >
-        <div className="animate__animated animate__fadeInUp flex flex-col bg-white bg-opacity-10 backdrop-blur-lg rounded-xl space-y-4  mt-20">
-          <BackgroundBasic text={"Búsqueda de Activos TI"}>
-            <FormS
-              register={register}
-              handleSubmit={handleSubmit}
-              onSubmit={onSubmit}
-              setValue={setValue}
-              watch={watch}
-            />
-          </BackgroundBasic>
-          <BackgroundBasic text={"Resultados"}>
-            <div className="justify-center  space-y-5 ">
-              <div className="flex h-10">
-                <div className=" flex h-10 w-full flex-row-reverse overflow-clip rounded-lg">
-                  <input
-                    className="peer text-center rounded-r-lg border border-slate-400 px-2 text-slate-900 placeholder-slate-400 transition-colors duration-300 focus:outline-none"
-                    type="number"
-                    name="limit"
-                    id="limit"
-                    placeholder=" N° Resultados "
-                    value={falseLimit}
-                    onChange={(e) => {
-                      setFalseLimit(e.target.value);
-                    }}
-                  />
-                  <label
-                    className="flex  bg-gray-200 justify-center items-center  rounded-l-lg  px-2 text-sm transition-colors duration-300 peer-focus:border-[#2BCD32] peer-focus:bg-verde peer-focus:text-white"
-                    htmlFor="limit"
-                  >
-                    Se muestran los 5 primeros resultados
-                  </label>
-                </div>
-                <button
-                  className=" ml-3  border  text-white text-sm bg-verde hover:bg-green-700 rounded-l-lg rounded-r-lg leading-tight  px-5"
-                  onClick={() => {
-                    if (falseAbierta !== abierta) setDataTable([]);
-                    setLimit(falseLimit);
-                    setAbierta(falseAbierta);
+    <div
+      style={{
+        backgroundImage:
+          "url('https://img.freepik.com/free-vector/topographic-contour-lines-map-seamless-pattern_1284-52862.jpg?size=626&ext=jpg&ga=GA1.1.1574565953.1694553592&semt=sph)",
+      }}
+      className="flex flex-col  items-center place-content-center  "
+    >
+      <div className="animate__animated animate__fadeInUp flex flex-col bg-white bg-opacity-10 backdrop-blur-lg rounded-xl space-y-4 w-2/3  mt-20">
+        <BackgroundBasic text={"Búsqueda de Activos TI"}>
+          <FormS
+            register={register}
+            handleSubmit={handleSubmit}
+            onSubmit={onSubmit}
+            setValue={setValue}
+            watch={watch}
+          />
+        </BackgroundBasic>
+        <BackgroundBasic text={"Resultados"}>
+          <div className="justify-center  space-y-5 ">
+            <div className="flex h-10">
+              <div className=" flex h-10 w-full flex-row-reverse overflow-clip rounded-lg">
+                <input
+                  className="peer text-center rounded-r-lg border border-slate-400 px-2 text-slate-900 placeholder-slate-400 transition-colors duration-300 focus:outline-none"
+                  type="number"
+                  name="limit"
+                  id="limit"
+                  placeholder=" N° Resultados "
+                  value={falseLimit}
+                  onChange={(e) => {
+                    setFalseLimit(e.target.value);
                   }}
+                />
+                <label
+                  className="flex  bg-gray-200 justify-center items-center  rounded-l-lg  px-2 text-sm transition-colors duration-300 peer-focus:border-[#2BCD32] peer-focus:bg-verde peer-focus:text-white"
+                  htmlFor="limit"
                 >
-                  Aplicar
-                </button>
+                  Se muestran los 5 primeros resultados
+                </label>
               </div>
-
-              {!dataTable.length ? (
-                <p className="text-center">
-                  <h3>NO hay datos de esta búsqueda</h3>
-                  <Image
-                    src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-2506.jpg?size=626&ext=jpg&ga=GA1.1.1574565953.1694553592&semt=ais"
-                    alt="No hay datos"
-                    width={300}
-                    height={300}
-                  />
-                </p>
-              ) : dataTable.length &&
-                dataTable.slice((page - 1) * limit, page * limit).length ===
-                  0 ? (
-                <div className="text-rojo text-sm font-bold ">
-                  No hay mas coincidencias con esa búsqueda
-                </div>
-              ) : (
-                <Table>
-                  {dataTable
-                    .slice((page - 1) * limit, page * limit)
-                    .map((data) => (
-                      <tr className=" odd:bg-gray-400/20 h-16" key={data.id}>
-                        <th className={styleth}>{data?.codigo}</th>
-                        <th className={`${styleth} text-left`}>
-                          {data.oficina}
-                        </th>
-                        <th className={styleth}>{data.fecha}</th>
-                        <th className={styleth}>{data.tipoDoc}</th>
-                        <th>
-                          <Link
-                            className="flex hover:text-green-700 font-normal gap-2 text-sm items-center"
-                            href={`/preview?id=${data.id}`}
-                          >
-                            <FolderSearch2
-                              className="cursor-pointer"
-                              size={14}
-                            />
-                            Preview
-                          </Link>
-                        </th>
-                      </tr>
-                    ))}
-                </Table>
-              )}
-              <br />
-              <div className="space-x-1">
-                <button
-                  onClick={() => {
-                    beforePage();
-                  }}
-                  title="Anterior"
-                  className="bg-green-100 border-1  border-green-500 text-green-500 hover:bg-green-200 rounded-full px-3 py-1"
-                >
-                  <ArrowLeft size={15} />
-                </button>
-
-                <button
-                  onClick={() => {
-                    nextPage();
-                  }}
-                  title="Siguiente"
-                  className="bg-green-100 border-1  border-green-500 text-green-500 hover:bg-green-200 rounded-full px-3 py-1"
-                >
-                  <ArrowRight size={15} />
-                </button>
-              </div>
+              <button
+                className=" ml-3  border  text-white text-sm bg-verde hover:bg-green-700 rounded-l-lg rounded-r-lg leading-tight  px-5"
+                onClick={() => {
+                  if (falseAbierta !== abierta) setDataTable([]);
+                  setLimit(falseLimit);
+                  setAbierta(falseAbierta);
+                }}
+              >
+                Aplicar
+              </button>
             </div>
-          </BackgroundBasic>
-        </div>
+
+            {!dataTable.length ? (
+              <p className="text-center">
+                <h3>NO hay datos de esta búsqueda</h3>
+                <Image
+                  src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-2506.jpg?size=626&ext=jpg&ga=GA1.1.1574565953.1694553592&semt=ais"
+                  alt="No hay datos"
+                  width={300}
+                  height={300}
+                />
+              </p>
+            ) : dataTable.length &&
+              dataTable.slice((page - 1) * limit, page * limit).length === 0 ? (
+              <div className="text-rojo text-sm font-bold ">
+                No hay mas coincidencias con esa búsqueda
+              </div>
+            ) : (
+              <Table>
+                {dataTable
+                  .slice((page - 1) * limit, page * limit)
+                  .map((data) => (
+                    <tr className=" odd:bg-gray-400/20 h-16" key={data.id}>
+                      <th className={styleth}>{data?.codigo}</th>
+                      <th className={`${styleth} text-left`}>{data.oficina}</th>
+                      <th className={styleth}>{data.fecha}</th>
+                      <th className={styleth}>{data.tipoDoc}</th>
+                      <th>
+                        <Link
+                          className="flex hover:text-green-700 font-normal gap-2 text-sm items-center"
+                          href={`/preview?id=${data.id}`}
+                        >
+                          <FolderSearch2 className="cursor-pointer" size={14} />
+                          Preview
+                        </Link>
+                      </th>
+                    </tr>
+                  ))}
+              </Table>
+            )}
+            <br />
+            <div className="space-x-1">
+              <button
+                onClick={() => {
+                  beforePage();
+                }}
+                title="Anterior"
+                className="bg-green-100 border-1  border-green-500 text-green-500 hover:bg-green-200 rounded-full px-3 py-1"
+              >
+                <ArrowLeft size={15} />
+              </button>
+
+              <button
+                onClick={() => {
+                  nextPage();
+                }}
+                title="Siguiente"
+                className="bg-green-100 border-1  border-green-500 text-green-500 hover:bg-green-200 rounded-full px-3 py-1"
+              >
+                <ArrowRight size={15} />
+              </button>
+            </div>
+          </div>
+        </BackgroundBasic>
       </div>
-    </>
+    </div>
   );
 };
 

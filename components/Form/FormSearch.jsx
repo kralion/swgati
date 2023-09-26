@@ -1,69 +1,37 @@
-import { set, useForm } from "react-hook-form";
 import Button from "@components/Button";
 import Input from "@components/Input";
 import InputOption from "@components/InputOption";
 
 const FormS = ({ register, handleSubmit, onSubmit, setValue, watch }) => {
-  const officeOptionArray = [
-    "",
-    "Consejo municipal",
-    "Alcaldía",
-    "Secretaría general",
-    "Trámite documentario",
-    "Oficina de relaciones institucionales y comunicaciones",
-    "Mesa de partes",
-    "Gerencia municipal",
-    "Unidad de tesorería",
-    "Unidad de abastecimiento",
-    "Unidad de gestión de recursos humanos",
-    "Unidad de control patrimonial y almacén",
-    "Unidad de rentas",
-    "Oficina de contabilidad, planeamiento y presupuesto",
-    "Oficina de asesoría legal",
-    "Oficina de programación multianual de inversiones",
-    "Subgerencia de desarrollo e inclusión social",
-    "Unidad de programas sociales",
-    "Unidad local de empadronamiento – SISFOH",
-    "OMAPED",
-    "DEMUNA",
-    "Subgerencia de gestión ambiental y servicios municipales",
-    "Unidad de medio ambiente y gestión de residuos sólidos",
-    "Unidad de fiscalización",
-    "Oficina de registro y estado civil",
-    "Secretaría técnica de seguridad ciudadana y defensa civil",
-    "Subgerencia, infraestructura y desarrollo urbano rural",
-    "Unidad de obras públicas",
-    "Área técnica municipal de los servicios de agua y saneamiento",
+  const tiAssetOptionArray = [
+    "Servidores",
+    "Computadoras de Escritorio",
+    "Laptops",
+    "Impresoras y Escáneres",
+    "Switches y Enrutadores",
+    "Dispositivos de Almacenamiento",
+    "Cámaras de Seguridad",
+    "Software de Oficina",
+    "Software de Seguridad",
+    "Teléfonos IP",
   ];
-
-  const typedocOptionArray = [
-    "",
-    "Solicitud",
-    "Oficio",
-    "Memorándum",
-    "Cartas",
-    "Costos",
-    "Programa vaso de leche",
-    "Informes",
-    "Requerimientos",
-    "Planillas",
-    "Cobro estipulado",
-    "Recibo de ingresos",
-    "Órdenes",
-    "Planos",
-    "Manera de pago",
-    "Ordenanza",
-    "Declaraciones juradas",
-    "Conformidades",
-    "Resoluciones",
-    "Comprobantes de pago",
-    "Resoluciones de alcaldía",
-    "Ordenanzas municipales",
+  const tiAssetDocumentTypes = [
+    "Orden de Compra",
+    "Contrato de Compra",
+    "Licencia de Software",
+    "Contrato de Arrendamiento",
+    "Solicitud de Adquisición",
+    "Cotización de Proveedores",
+    "Acuerdo de Nivel de Servicio (SLA)",
+    "Contrato de Mantenimiento",
+    "Informe de Evaluación de Activos",
+    "Factura de Compra",
+    "Garantía del Fabricante",
   ];
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="grid grid-cols-2 gap-7 content-start mt-3">
+      <div className="grid grid-cols-2 gap-7  content-start mt-3">
         <Input
           label="Código:"
           name="codigo"
@@ -97,8 +65,8 @@ const FormS = ({ register, handleSubmit, onSubmit, setValue, watch }) => {
         />
         <div className="">
           <InputOption
-            optionArray={officeOptionArray}
-            label="Oficina:"
+            optionArray={tiAssetOptionArray}
+            label="Tipo de Activo :"
             name="oficina"
             register={register}
             otheroption="otraOficina"
@@ -108,12 +76,12 @@ const FormS = ({ register, handleSubmit, onSubmit, setValue, watch }) => {
           />
         </div>
         <InputOption
-          optionArray={typedocOptionArray}
-          label="Tipo documento:"
+          optionArray={tiAssetDocumentTypes}
+          label="Tipo Contrato:"
           name="tipoDoc"
           register={register}
           otheroption="otroDocumento"
-          photheroption="Ingrese el Tipo"
+          photheroption="Ingrese el tipo"
           setValue={setValue}
           watch={watch}
         />
