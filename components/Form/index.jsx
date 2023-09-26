@@ -44,7 +44,7 @@ const Form = ({
       <div className="flex items-center justify-center">
         <div className="mx-auto w-full ">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="grid grid-cols-2 grid-rows-7 content-start">
+            <div className="grid grid-cols-2 gap-7 grid-rows-7 content-start">
               <Input
                 label="Código*:"
                 name="codigo"
@@ -115,13 +115,13 @@ const Form = ({
                 name="asunto"
                 display={"flex"}
                 type={"name"}
-                placeholder={"Asunto"}
+                placeholder="Breve descripción del activo TI"
                 register={register}
               />
             </div>
-            <h3 className="m-7">(*) Estos campos son obligatorios</h3>
+            <h3 className="my-7">(*) Estos campos son obligatorios</h3>
 
-            <div className="grid grid-cols-3 gap-7 m-7   ">
+            <div className="grid grid-cols-3 gap-5  ">
               <Button color="blue" text="Limpiar" type="reset" />
               <Button color="green" text="Guardar Cambios" type="submit" />
               <Link href={id ? `/preview?id=${id}` : `/`}>

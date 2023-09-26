@@ -10,6 +10,7 @@ import { Cable } from "lucide-react";
 import { Inter } from "next/font/google";
 import Image from "next/image";
 import { LogOutIcon } from "lucide-react";
+import "animate.css";
 
 const inter = Inter({
   subsets: ["latin-ext"],
@@ -45,20 +46,21 @@ const Navbar = ({ children }) => {
       className={`min-h-screen flex flex-col bg-slate-50 ${inter.className}`}
     >
       <nav
-        className={`flex items-center fixed w-screen ${
-          user ? "justify-between" : "justify-center"
-        } h-[85px] flex-wrap py-4 px-6`}
+        className={`flex gap-14 items-center w-full bg-white ${
+          user ? "inline-flex" : "hidden"
+        }  pt-4 px-6`}
       >
-        <Link className="flex  text-white gap-1 " href={"/"}>
+        <Link href={"/"}>
           <Image
-            src="https://www.munihuancayo.gob.pe/portal/images/MPH%201.jpg#joomlaImage://local-images/MPH%201.jpg?width=855&height=398"
+            className="cursor-pointer animate__animated animate__fadeInLeft hover:opacity-70 transition-all duration-200 ease-in-out"
+            src="https://o.remove.bg/downloads/36fc9ab4-1aff-43ce-8c6c-80f1e41de6d7/MPH_1-removebg-preview.png"
             width={200}
             height={100}
             alt="Municipalidad Provincial de Huancayo"
           />
         </Link>
         {user ? (
-          <div className="block lg:hidden">
+          <div className="inline-block lg:hidden">
             <button
               className="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-white hover:border-white"
               onClick={ocultarNavbar}
@@ -77,42 +79,32 @@ const Navbar = ({ children }) => {
           ""
         )}
 
-        <div
-          className={`w-full ${display} flex lg:flex items-start  lg:-mt-2 lg:w-auto  lg:py-0 py-4`}
-        >
+        <div className={`w-full ${display}  lg:flex lg:-mt-2 lg:py-0 `}>
           {user ? (
-            <div className="text-sm space-x-3  ">
+            <div className="text-sm flex gap-5">
               <Link
                 href="/save_document"
-                className=" lg:inline-block  hover:bg-green-200 py-1 px-3 rounded-md  duration-200  lg:-mt-0  "
+                className=" lg:inline-block hover:font-black hover:text-verde  duration-200    "
               >
                 Registro
               </Link>
               <Link
                 href="/search"
-                className="lg:inline-block  hover:bg-green-200  py-1 px-3 rounded-md duration-200  lg:mt-0  "
+                className="lg:inline-block  hover:font-black hover:text-verde    duration-200   "
               >
                 Búsqueda
               </Link>
-            </div>
-          ) : (
-            ""
-          )}
-          {user ? (
-            <div>
               <button
                 onClick={logout}
                 href="#responsive-header"
                 title="Cerrar Sesión"
-                className=" flex items-center text-sm  hover:bg-green-200  gap-2 py-1 px-3 rounded-md duration-200    "
+                className=" flex items-center text-sm gap-1 hover:font-black hover:text-verde    duration-200    "
               >
                 Cerrar Sesión
                 <LogOutIcon size={15} />
               </button>
             </div>
-          ) : (
-            ""
-          )}
+          ) : null}
         </div>
       </nav>
       {children}

@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import Head from "next/head";
 import { FolderSearch2, ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import "animate.css";
 
 const SearchPage = () => {
   const { register, handleSubmit, setValue, watch, getValues } = useForm();
@@ -107,13 +108,19 @@ const SearchPage = () => {
   return (
     <>
       <Head>
-        <title>Buscar Documento</title>
+        <title>Búsqueda de Activos TI</title>
         <meta name="description" content="Generado en react" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-col items-center place-content-center  min-w-full min-h-screen">
-        <div className="flex flex-col space-y-4 mt-28">
+      <div
+        style={{
+          backgroundImage:
+            "url('https://img.freepik.com/free-vector/topographic-contour-lines-map-seamless-pattern_1284-52862.jpg?size=626&ext=jpg&ga=GA1.1.1574565953.1694553592&semt=sph)",
+        }}
+        className="flex flex-col  items-center place-content-center  "
+      >
+        <div className="animate__animated animate__fadeInUp flex flex-col bg-white bg-opacity-10 backdrop-blur-lg rounded-xl space-y-4  mt-20">
           <BackgroundBasic text={"Búsqueda de Activos TI"}>
             <FormS
               register={register}
@@ -124,9 +131,9 @@ const SearchPage = () => {
             />
           </BackgroundBasic>
           <BackgroundBasic text={"Resultados"}>
-            <div className="justify-center space-y-5 ">
-              <div className="flex w-f h-10">
-                <div className="relative flex h-10 w-full flex-row-reverse overflow-clip rounded-lg">
+            <div className="justify-center  space-y-5 ">
+              <div className="flex h-10">
+                <div className=" flex h-10 w-full flex-row-reverse overflow-clip rounded-lg">
                   <input
                     className="peer text-center rounded-r-lg border border-slate-400 px-2 text-slate-900 placeholder-slate-400 transition-colors duration-300 focus:outline-none"
                     type="number"
@@ -170,35 +177,19 @@ const SearchPage = () => {
               ) : dataTable.length &&
                 dataTable.slice((page - 1) * limit, page * limit).length ===
                   0 ? (
-                <div className=" flex flex-col items-center text-center">
-                  <span className="text-center text-rojo font-bold uppercase my-10">
-                    Hzzz... parece que no hay más datos relacionados a tu
-                    búsqueda
-                  </span>
-                  <Image
-                    src="https://img.freepik.com/free-vector/cyber-attack-law-enforcement-criminal-stealing-money-online_335657-3130.jpg?size=626&ext=jpg&ga=GA1.1.1574565953.1694553592&semt=ais"
-                    alt="No hay datos"
-                    width={500}
-                    height={500}
-                  />
-                  <button
-                    onClick={() => {
-                      beforePage();
-                    }}
-                    className="bg-green-100 border-1 w-36 flex items-center justify-center border-green-500 text-green-500 gap-2 hover:bg-green-200 rounded-full px-3 py-1"
-                  >
-                    <ArrowLeft size={15} />
-                    Ir Atrás
-                  </button>
+                <div className="text-rojo text-sm font-bold ">
+                  No hay mas coincidencias con esa búsqueda
                 </div>
               ) : (
                 <Table>
                   {dataTable
                     .slice((page - 1) * limit, page * limit)
                     .map((data) => (
-                      <tr className=" odd:bg-gray-300/20 h-16" key={data.id}>
+                      <tr className=" odd:bg-gray-400/20 h-16" key={data.id}>
                         <th className={styleth}>{data?.codigo}</th>
-                        <th className={styleth}>{data.oficina}</th>
+                        <th className={`${styleth} text-left`}>
+                          {data.oficina}
+                        </th>
                         <th className={styleth}>{data.fecha}</th>
                         <th className={styleth}>{data.tipoDoc}</th>
                         <th>

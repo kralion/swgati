@@ -7,37 +7,17 @@ const Input = ({
   placeholder,
   name,
 }) => {
-  let typedisplay;
-  let margin = "";
-  let padding = "";
-
-  switch (display) {
-    case "inline":
-      typedisplay = "block";
-      margin = "mb-2";
-      break;
-    case "flex":
-      typedisplay = "flex items-center";
-      padding = "px-2";
-      break;
-    default:
-      break;
-  }
-
   return (
-    <div className={`${typedisplay} m-5`}>
-      <label
-        htmlFor={`${name}`}
-        className={`${typedisplay} ${margin} ${padding}  text-sm `}
-      >
+    <div className="space-y-2 ">
+      <label htmlFor={name} className="text-sm">
         {label}
       </label>
       <input
         {...register(name)}
-        type={`${type}`}
-        id={`${name}`}
-        className="bg-white px-5 py-3 border-1 border-verde text-verde text-sm rounded-lg block w-full p-2.5  "
-        placeholder={`${placeholder}`}
+        type={type}
+        id={name}
+        className="bg-white  border-1 border-verde text-verde text-sm rounded-lg block w-full p-3 "
+        placeholder={placeholder}
         required={required}
         // {...props}
       />

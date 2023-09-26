@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import Input from "@components/Input";
+import { useEffect } from "react";
 
 const InputOption = ({
   optionArray,
@@ -23,17 +22,14 @@ const InputOption = ({
 
   return (
     <>
-      <div className="flex items-center m-3 ">
-        <label
-          htmlFor={`${name}`}
-          className={`flex items-center px-2 text-sm font-medium text-gray-600 w-28 max-h-8 mr-3`}
-        >
+      <div className="space-y-2  ">
+        <label htmlFor={`${name}`} className={`text-sm `}>
           {label}
         </label>
         <div className="flex items-center gap-2">
           <select
             {...register(name)}
-            className=" border-1 border-verde text-verde text-sm  rounded-m  w-full p-2.5  max-h-14 rounded-lg"
+            className=" border-1 border-verde text-verde text-sm w-full    p-2.5   rounded-lg"
           >
             {optionArray.map((option, idx) => (
               <option key={idx} value={option}>

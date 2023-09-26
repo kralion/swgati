@@ -7,6 +7,7 @@ import Head from "next/head";
 import { EyeIcon } from "lucide-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { FolderSearch2 } from "lucide-react";
+import "animate.css";
 
 const HomePage = () => {
   const router = useRouter();
@@ -62,14 +63,20 @@ const HomePage = () => {
   return (
     <>
       <Head>
-        <title>Municipalidad de Huancayo - GATI</title>
+        <title>Municipalidad de Huancayo - SWGATI</title>
         <meta name="description" content="Generado en react" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-col items-center place-content-center bg-white min-w-full min-h-screen">
-        <div className="flex flex-col space-y-4">
-          <BackgroundBasic text={"Recientemente Registrados"}>
+      <div
+        style={{
+          backgroundImage:
+            "url('https://img.freepik.com/free-vector/topographic-contour-lines-map-seamless-pattern_1284-52862.jpg?size=626&ext=jpg&ga=GA1.1.1574565953.1694553592&semt=sph)",
+        }}
+        className="flex flex-col items-center place-content-center bg-white min-w-full min-h-screen"
+      >
+        <div className="flex animate__animated animate__fadeInUp bg-white bg-opacity-5 backdrop-blur-lg rounded-xl flex-col space-y-4">
+          <BackgroundBasic text={"Registros Recientes"}>
             <div className="space-y-7">
               <div className="flex  h-10">
                 <div className="relative flex h-10 w-full flex-row-reverse overflow-clip rounded-lg">
@@ -107,7 +114,7 @@ const HomePage = () => {
                 {dataTable
                   .slice((page - 1) * limit, page * limit)
                   .map((data) => (
-                    <tr className=" odd:bg-gray-300/20 h-16" key={data.id}>
+                    <tr className=" odd:bg-gray-400/20 h-16" key={data.id}>
                       <th className={styleth}>{data?.codigo}</th>
                       <th className="text-left font-normal">{data.oficina}</th>
                       <th className={styleth}>{data.fecha}</th>

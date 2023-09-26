@@ -63,7 +63,7 @@ const FormS = ({ register, handleSubmit, onSubmit, setValue, watch }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="grid grid-cols-2 content-start mt-3">
+      <div className="grid grid-cols-2 gap-7 content-start mt-3">
         <Input
           label="Código:"
           name="codigo"
@@ -117,9 +117,8 @@ const FormS = ({ register, handleSubmit, onSubmit, setValue, watch }) => {
           setValue={setValue}
           watch={watch}
         />
-        <div className="row-start-4 row-end-5 col-start-2 col-end-3 w-2/5 mx-auto">
-          <Button color={"blue"} text={"Buscar"} type={"submit"} />
-        </div>
+        <div></div>
+        <Button color={"blue"} text={"Buscar"} type={"submit"} />
       </div>
     </form>
   );

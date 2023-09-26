@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "@libs/firebase";
 import Head from "next/head";
+import "animate.css";
 // import { adminAuth } from '@libs/firebaseAdmin';
 // import nookies from 'nookies';
 
@@ -116,14 +117,20 @@ const SaveDocumentPage = () => {
   return (
     <>
       <Head>
-        <title>Registrar Documento</title>
+        <title>Registrar Activo TI</title>
         <meta name="description" content="Generado en react" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-col items-center place-content-center min-h-screen">
-        <div className="flex flex-col mt-20">
-          <BackgroundBasic text={"Formulario de Registro"}>
+      <div
+        style={{
+          backgroundImage:
+            "url('https://img.freepik.com/free-vector/topographic-contour-lines-map-seamless-pattern_1284-52862.jpg?size=626&ext=jpg&ga=GA1.1.1574565953.1694553592&semt=sph)",
+        }}
+        className="flex flex-col items-center  h-screen"
+      >
+        <div className="flex bg-white animate__animated animate__fadeInUp bg-opacity-10 backdrop-blur-lg w-[900px] rounded-xl flex-col p-5 mt-20 ">
+          <BackgroundBasic text={"Formulario de Registro del Activo TI"}>
             <Form
               register={register}
               handleSubmit={handleSubmit}

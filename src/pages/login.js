@@ -3,6 +3,7 @@ import Input from "@components/Input";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { AtSign } from "lucide-react";
+import "animate.css";
 
 import { useAuth } from "@context/AuthContext";
 import Head from "next/head";
@@ -14,7 +15,7 @@ const LoginPage = () => {
   return (
     <>
       <Head>
-        <title>Ingreso</title>
+        <title>Login</title>
         <meta name="description" content="Generado en react" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -28,7 +29,7 @@ const LoginPage = () => {
           height={800}
         />
 
-        <div className="mx-auto flex flex-col ">
+        <div className="mx-auto animate__animated animate__fadeInDown flex flex-col ">
           <p className=" text-center">
             Sistema de Gestión de Activos TI | <strong>SWGATI</strong>
           </p>
@@ -37,6 +38,7 @@ const LoginPage = () => {
               Ingreso a la Plataforma
             </p>
             <form
+              className="space-y-5"
               onSubmit={handleSubmit(({ email, password }) =>
                 login(email, password)
               )}
