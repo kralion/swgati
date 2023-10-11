@@ -6,6 +6,8 @@ import "animate.css";
 import LogoMuni from "../assets/logo-muni.png";
 import { Bebas_Neue } from "next/font/google";
 import { useAuth } from "@context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const bebasNeue = Bebas_Neue({
   subsets: ["latin-ext"],
@@ -14,16 +16,21 @@ const bebasNeue = Bebas_Neue({
 
 const LoginPage = () => {
   const { register, handleSubmit } = useForm();
-  const { login } = useAuth();
+  const { login, error } = useAuth();
+  const notify = () =>
+    toast.error("Credenciales Incorrectas", {
+      autoClose: 2000,
+      pauseOnHover: true,
+    });
 
   return (
     <div className="flex flex-col lg:mt-0 lg:flex-row justify-between bg-gradient-to-br from-green-100 via-green-400 to-yellow-300 h-screen ">
       <Image
         src="https://munihuancayo.gob.pe/web_mph2023/images/DJI_0711.JPG"
-        className="h-screen w-full lg:w-2/3"
+        className=" object-cover  "
         alt="image"
-        width={800}
-        height={800}
+        width={900}
+        height={500}
       />
 
       <div className="mx-auto animate__animated animate__fadeInDown flex flex-col mt-20 ">
@@ -72,6 +79,8 @@ const LoginPage = () => {
           </form>
         </div>
       </div>
+      {error && notify()}
+      <ToastContainer />
     </div>
   );
 };

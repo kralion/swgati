@@ -1,12 +1,11 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { auth } from "@libs/firebase";
 import {
-  signInWithEmailAndPassword,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { auth } from "@libs/firebase";
 import { useRouter } from "next/router";
-import Alert from "@components/alerts";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext();
 
@@ -16,6 +15,7 @@ export const AuthProvider = ({ children }) => {
   const { push } = useRouter();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -40,8 +40,8 @@ export const AuthProvider = ({ children }) => {
       .then(() => {
         push("/");
       })
-      .catch((error) => {
-        alert("Credenciales Incorrectas");
+      .catch((err) => {
+        setError(true);
       });
   };
 
@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, error }}>
       {loading ? null : children}
     </AuthContext.Provider>
   );

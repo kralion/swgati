@@ -7,7 +7,6 @@ export default function Document() {
         <meta name="description" content="Generado en react" />
         <meta name="keywords" content="react, next, javascript" />
         <meta name="author" content="Jhonatan" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <link
           rel="shortcut icon"
