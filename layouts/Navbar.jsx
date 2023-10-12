@@ -81,19 +81,25 @@ const Navbar = ({ children }) => {
                 href="/save_document"
                 className=" lg:inline-block font-bold text-verde hover:opacity-60   duration-200    "
               >
-                Registras Activos TI
+                Registros
               </Link>
               <Link
                 href="/search"
                 className=" lg:inline-block font-bold text-verde hover:opacity-60   duration-200    "
               >
-                Buscar Registros
+                Consultas
+              </Link>
+              <Link
+                href="/reportes"
+                className=" lg:inline-block font-bold text-verde hover:opacity-60   duration-200    "
+              >
+                Reportes
               </Link>
               <button
                 onClick={logout}
                 href="#responsive-header"
                 title="Cerrar Sesión"
-                className=" flex items-center gap-1 font-bold text-verde hover:opacity-60 mt-0.5  duration-200    "
+                className=" flex items-center gap-1 font-bold text-verde hover:opacity-60 duration-200    "
               >
                 Cerrar Sesión
                 <LogOutIcon size={15} />
