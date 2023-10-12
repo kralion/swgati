@@ -120,11 +120,11 @@ const Form = ({
             </div>
             <h3 className="my-7">(*) Estos campos son obligatorios</h3>
 
-            <div className="grid grid-cols-3 gap-5  ">
-              <Button color="blue" text="Limpiar" type="reset" />
-              <Button color="green" text="Guardar Cambios" type="submit" />
+            <div className="flex gap-3 justify-end items-center">
+              <Button color="edit" text="Limpiar" type="reset" />
+              <Button color="success" text="Guardar" type="submit" />
               <Link href={id ? `/preview?id=${id}` : `/`}>
-                <Button color="red" text="Cancelar" />
+                <Button color="delete" text="Cancelar" />
               </Link>
             </div>
           </form>

@@ -75,7 +75,7 @@ const LoginPage = () => {
               required
             />
 
-            <Button color="green" type="submit" text="Iniciar Sesión" />
+            <Button color="success" type="submit" text="Iniciar Sesión" />
           </form>
         </div>
       </div>

@@ -108,7 +108,16 @@ const Navbar = ({ children }) => {
           ) : null}
         </div>
       </nav>
-      {children}
+      <div
+        style={{
+          backgroundImage:
+            "url('https://img.freepik.com/free-vector/topographic-contour-lines-map-seamless-pattern_1284-52862.jpg?size=626&ext=jpg&ga=GA1.1.1574565953.1694553592&semt=sph)",
+          backgroundPosition: "center",
+        }}
+        className="p-10"
+      >
+        {children}
+      </div>
     </div>
   );
 };

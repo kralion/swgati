@@ -122,7 +122,7 @@ const SaveDocumentPage = () => {
         }}
         className="flex flex-col items-center  h-screen"
       >
-        <div className="flex bg-white animate__animated animate__fadeInUp bg-opacity-10 backdrop-blur-lg w-[900px] rounded-xl flex-col p-5 mt-20 ">
+        <div className="flex w-2/3 flex-col ">
           <BackgroundBasic text={"Formulario de Registro del Activo TI"}>
             <Form
               register={register}

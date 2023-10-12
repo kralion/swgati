@@ -30,16 +30,16 @@ const PreviewPage = () => {
           <div className="flex w-1/5 flex-col justify-around p-4">
             {id && (
               <Link href={`/edit_document?id=${id}`}>
-                <Button text={"Editar Campos"} color={"blue"} />
+                <Button text={"Editar Campos"} color="edit" />
               </Link>
             )}
             {data && (
               <Link href={data.url} target="_blank">
-                <Button text={"Ver Documento"} color={"blue"} />
+                <Button text={"Ver Documento"} color="success" />
               </Link>
             )}
             <Link href={"/search"}>
-              <Button text={"Cerrar"} color={"red"} />
+              <Button text={"Cerrar"} color="delete" />
             </Link>
           </div>
         </div>

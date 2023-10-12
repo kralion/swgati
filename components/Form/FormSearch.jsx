@@ -86,7 +86,7 @@ const FormS = ({ register, handleSubmit, onSubmit, setValue, watch }) => {
           watch={watch}
         />
         <div></div>
-        <Button color={"blue"} text={"Buscar"} type={"submit"} />
+        <Button color="success" text={"Buscar"} type={"submit"} />
       </div>
     </form>
   );
