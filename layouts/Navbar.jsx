@@ -74,27 +74,29 @@ const Navbar = ({ children }) => {
           ""
         )}
 
-        <div className={`w-full ${display}  lg:flex lg:-mt-2 lg:py-0 `}>
+        <div className={` ${display}  lg:flex lg:-mt-2 lg:py-0 `}>
           {user ? (
-            <div className="text-sm flex gap-5">
-              <Link
-                href="/save_document"
-                className=" lg:inline-block font-bold text-verde hover:opacity-60   duration-200    "
-              >
-                Registros
-              </Link>
-              <Link
-                href="/search"
-                className=" lg:inline-block font-bold text-verde hover:opacity-60   duration-200    "
-              >
-                Consultas
-              </Link>
-              <Link
-                href="/reportes"
-                className=" lg:inline-block font-bold text-verde hover:opacity-60   duration-200    "
-              >
-                Reportes
-              </Link>
+            <div className="flex items-center gap-[700px] text-sm">
+              <div className=" flex gap-5">
+                <Link
+                  href="/save_document"
+                  className=" lg:inline-block font-bold text-verde hover:opacity-60   duration-200    "
+                >
+                  Registros
+                </Link>
+                <Link
+                  href="/search"
+                  className=" lg:inline-block font-bold text-verde hover:opacity-60   duration-200    "
+                >
+                  Consultas
+                </Link>
+                <Link
+                  href="/reportes"
+                  className=" lg:inline-block font-bold text-verde hover:opacity-60   duration-200    "
+                >
+                  Reportes y Analíticas
+                </Link>
+              </div>
               <button
                 onClick={logout}
                 href="#responsive-header"
