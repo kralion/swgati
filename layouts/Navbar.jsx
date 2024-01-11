@@ -4,8 +4,10 @@ import { LogOutIcon } from "lucide-react";
 import { Inter } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import LogoMuni from "../src/assets/logo-muni.png";
+import styles from "./navbar.module.css";
 
 const inter = Inter({
   subsets: ["latin-ext"],
@@ -13,6 +15,9 @@ const inter = Inter({
 
 const Navbar = ({ children }) => {
   const [navbarOculta, setNavbarOculta] = useState(true);
+  const router = useRouter(); // Utiliza el hook useRouter
+  const isCurrentPath = (path) => router.pathname === path;
+
   // const { push } = useRouter();
   const { user, logout } = useAuth();
 
@@ -37,11 +42,9 @@ const Navbar = ({ children }) => {
   }
 
   return (
-    <div
-      className={`min-h-screen flex flex-col bg-slate-50 ${inter.className}`}
-    >
+    <div className={` flex flex-col ${styles.background}  ${inter.className}`}>
       <nav
-        className={`flex gap-14 items-center w-full bg-white ${
+        className={`flex gap-14 items-center w-full rounded-b-3xl bg-white ${
           user ? "inline-flex" : "hidden"
         }  pt-4 px-6`}
       >
@@ -76,50 +79,49 @@ const Navbar = ({ children }) => {
 
         <div className={` ${display}  lg:flex lg:-mt-2 lg:py-0 `}>
           {user ? (
-            <div className="flex items-center gap-[700px] text-sm">
-              <div className=" flex gap-5">
+            <div className="flex items-center lg:gap-[800px] gap-[400px] text-sm">
+              <div className="flex gap-5">
                 <Link
                   href="/save_document"
-                  className=" lg:inline-block font-bold text-verde hover:opacity-60   duration-200    "
+                  className={`lg:inline-block font-bold text-verde hover:opacity-60 duration-200 ${
+                    isCurrentPath("/save_document")
+                      ? "border-b-2 border-verde"
+                      : ""
+                  }`}
                 >
                   Registros
                 </Link>
                 <Link
                   href="/search"
-                  className=" lg:inline-block font-bold text-verde hover:opacity-60   duration-200    "
+                  className={`lg:inline-block font-bold text-verde hover:opacity-60 duration-200 ${
+                    isCurrentPath("/search") ? "border-b-2 border-verde" : ""
+                  }`}
                 >
                   Consultas
                 </Link>
                 <Link
                   href="/reportes"
-                  className=" lg:inline-block font-bold text-verde hover:opacity-60   duration-200    "
+                  className={`lg:inline-block font-bold text-verde hover:opacity-60 duration-200 ${
+                    isCurrentPath("/reportes") ? "border-b-2 border-verde" : ""
+                  }`}
                 >
-                  Reportes y Analíticas
+                  Estadísticas
                 </Link>
               </div>
               <button
                 onClick={logout}
                 href="#responsive-header"
                 title="Cerrar Sesión"
-                className=" flex items-center gap-1 font-bold text-verde hover:opacity-60 duration-200    "
+                className=" flex items-center gap-2 font-bold text-verde hover:opacity-60 duration-200    "
               >
-                Cerrar Sesión
+                Salir
                 <LogOutIcon size={15} />
               </button>
             </div>
           ) : null}
         </div>
       </nav>
-      <div
-        style={{
-          backgroundImage:
-            "url('https://img.freepik.com/free-vector/topographic-contour-lines-map-seamless-pattern_1284-52862.jpg?size=626&ext=jpg&ga=GA1.1.1574565953.1694553592&semt=sph)",
-          backgroundPosition: "center",
-        }}
-        className="p-10"
-      >
-        {children}
-      </div>
+      <div className={`p-10 ${styles.background}`}>{children}</div>
     </div>
   );
 };

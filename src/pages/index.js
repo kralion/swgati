@@ -95,12 +95,24 @@ const HomePage = () => {
 
           <Table>
             {dataTable.slice((page - 1) * limit, page * limit).map((data) => (
-              <tr className=" odd:bg-gray-400/20 h-16" key={data.id}>
+              <tr className=" odd:bg-zinc-100 h-16" key={data.id}>
                 <th className={styleth}>{data?.codigo}</th>
                 <th className="text-left font-normal">{data.oficina}</th>
                 <th className={styleth}>{data.fecha}</th>
                 <th className={styleth}>
-                  <span className="bg-yellow-100 text-yellow-500  rounded-xl px-2 py-1">
+                  <span
+                    className={
+                      data.tipoDoc === "Factura de Compra"
+                        ? "bg-orange-200 text-orange-500 rounded-xl px-2 py-1"
+                        : data.tipoDoc === "Contrato de Compra"
+                        ? "bg-green-200 text-green-500 rounded-xl px-2 py-1"
+                        : data.tipoDoc === "Orden de Compra"
+                        ? "bg-yellow-200 text-yellow-500 rounded-xl px-2 py-1"
+                        : data.tipoDoc === "Contrato de Mantenimiento"
+                        ? "bg-purple-200 text-purple-500 rounded-xl px-2 py-1"
+                        : "bg-gray-200 text-gray-500 rounded-xl px-2 py-1"
+                    }
+                  >
                     {data.tipoDoc}
                   </span>
                 </th>
@@ -173,7 +185,7 @@ const HomePage = () => {
                 beforePage();
               }}
               title="Anterior"
-              className="bg-green-100 border-1  border-green-500 text-green-500 hover:bg-green-200 rounded-full px-3 py-1"
+              className="bg-green-300 border-1  border-green-500 text-green-500 hover:opacity-80 rounded-full px-3 py-1"
             >
               <ArrowLeft size={15} />
             </button>
@@ -183,7 +195,7 @@ const HomePage = () => {
                 nextPage();
               }}
               title="Siguiente"
-              className="bg-green-100 border-1  border-green-500 text-green-500 hover:bg-green-200 rounded-full px-3 py-1"
+              className="bg-green-300 border-1  border-green-500 text-green-500 hover:opacity-80 rounded-full px-3 py-1"
             >
               <ArrowRight size={15} />
             </button>

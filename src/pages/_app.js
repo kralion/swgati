@@ -16,15 +16,15 @@ const App = ({ Component, pageProps }) => {
         <title>SWGATI - MPH</title>
       </Head>
       <AuthProvider>
-        <Navbar>
-          {noAuthRequired.includes(router.pathname) ? (
-            <Component {...pageProps} />
-          ) : (
+        {noAuthRequired.includes(router.pathname) ? (
+          <Component {...pageProps} />
+        ) : (
+          <Navbar>
             <ProtectedRoute>
               <Component {...pageProps} />
             </ProtectedRoute>
-          )}
-        </Navbar>
+          </Navbar>
+        )}
       </AuthProvider>
     </>
   );

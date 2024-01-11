@@ -115,13 +115,7 @@ const SaveDocumentPage = () => {
 
   return (
     <div>
-      <div
-        style={{
-          backgroundImage:
-            "url('https://img.freepik.com/free-vector/topographic-contour-lines-map-seamless-pattern_1284-52862.jpg?size=626&ext=jpg&ga=GA1.1.1574565953.1694553592&semt=sph)",
-        }}
-        className="flex flex-col items-center  h-screen"
-      >
+      <div className="flex flex-col items-center  h-screen">
         <div className="flex w-2/3 flex-col ">
           <BackgroundBasic text={"Formulario de Registro del Activo TI"}>
             <Form

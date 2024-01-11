@@ -19,29 +19,25 @@ const PreviewPage = () => {
   }, []);
 
   return (
-    <main className="flex justify-center items-center flex-1 h-full">
+    <main className="flex justify-center items-start flex-1 h-screen">
       <BackgroundBasic text={"vista previa"}>
-        <div className="flex w-full p-2 justify-around">
-          <div className="w-3/5 m-4 h-96 border-2 border-black">
-            {data && (
-              <iframe src={data.url} width="100%" height="100%"></iframe>
-            )}
-          </div>
-          <div className="flex w-1/5 flex-col justify-around p-4">
-            {id && (
-              <Link href={`/edit_document?id=${id}`}>
-                <Button text={"Editar Campos"} color="edit" />
-              </Link>
-            )}
-            {data && (
-              <Link href={data.url} target="_blank">
-                <Button text={"Ver Documento"} color="success" />
-              </Link>
-            )}
-            <Link href={"/search"}>
-              <Button text={"Cerrar"} color="delete" />
+        <div className="m-4 lg:h-[500px] lg:w-[500px] border-2  rounded-xl">
+          {data && <iframe src={data.url} width="100%" height="100%"></iframe>}
+        </div>
+        <div className="flex gap-4 justify-end mx-4 ">
+          {id && (
+            <Link href={`/edit_document?id=${id}`}>
+              <Button text={"Editar"} color="edit" />
             </Link>
-          </div>
+          )}
+          {data && (
+            <Link href={data.url} target="_blank">
+              <Button text={"Ver Más"} color="success" />
+            </Link>
+          )}
+          <Link href={"/search"}>
+            <Button text={"Cerrar"} color="delete" />
+          </Link>
         </div>
       </BackgroundBasic>
     </main>

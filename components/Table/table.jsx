@@ -9,7 +9,7 @@ const Table = ({ children }) => {
             {headtTexts.map((head, index) => (
               <th
                 key={index}
-                className="font-sans text-sm font-bold px-8 py-2 "
+                className="font-sans text-sm  font-bold px-8 py-2 "
               >
                 {head}
               </th>
