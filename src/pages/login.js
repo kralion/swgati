@@ -40,7 +40,7 @@ const LoginPage = () => {
         <span className="absolute top-5 left-5">
           Developed by{" "}
           <Link
-            href="https://twitter.com/joanpaucar_"
+            href="https://twitter.com/brayanpaucar_"
             target="_blank"
             referrerPolicy="no-referrer"
             className="font-semibold  underline hover:opacity-80 transition-all duration-200 ease-in-out"
